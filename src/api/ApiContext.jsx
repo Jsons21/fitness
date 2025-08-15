@@ -4,7 +4,6 @@
  */
 
 import { createContext, useContext, useState } from "react";
-
 import { useAuth } from "../auth/AuthContext";
 
 export const API = "https://fitnesstrac-kr.herokuapp.com/api";
@@ -25,12 +24,12 @@ export function ApiProvider({ children }) {
       ...options,
       headers,
     });
+
     const isJson = /json/.test(response.headers.get("Content-Type"));
     const result = isJson ? await response.json() : undefined;
     if (!response.ok) throw Error(result?.message ?? "Something went wrong :(");
     return result;
   };
-
   const [tags, setTags] = useState({});
 
   /** Stores the provided query function for a given tag */

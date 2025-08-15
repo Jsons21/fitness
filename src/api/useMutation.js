@@ -17,7 +17,7 @@ export default function useMutation(method, resource, tagsToInvalidate) {
     setError(null);
     try {
       const result = await request(resource, {
-        method,
+        method, 
         body: JSON.stringify(body),
       });
       setData(result);
@@ -29,6 +29,7 @@ export default function useMutation(method, resource, tagsToInvalidate) {
       setLoading(false);
     }
   };
+
 
   return { mutate, data, loading, error };
 }
